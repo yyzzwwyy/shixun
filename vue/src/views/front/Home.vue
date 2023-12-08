@@ -39,7 +39,7 @@
           </div>
           <div style="flex: 3; background-color: #F3F3F3FF; margin-top: 15px; margin-left: 15px; border-radius: 10px">
             <div style="text-align: center; margin-top: 30px">
-              <img @click="navToPerson" :src="user.avatar" alt="" style="width: 80px; height: 80px; border-radius: 50%">
+              <img @click="navTo('/front/person')" :src="user.avatar" alt="" style="width: 80px; height: 80px; border-radius: 50%">
               <div style="margin-top: 10px">Hi，{{user.name}}</div>
             </div>
             <div style="margin-top: 20px; padding: 0 15px">
@@ -74,7 +74,7 @@
         <div style="margin: 10px 5px 0 5px">
           <el-row>
             <el-col :span="5" v-for="item in goodsData">
-              <img :src="item.img" alt="" style="width: 100%; height: 175px; border-radius: 10px; border: #cccccc 1px solid">
+              <img @click="navTo('/front/detail?id=' + item.id)" :src="item.img" alt="" style="width: 100%; height: 175px; border-radius: 10px; border: #cccccc 1px solid">
               <div style="margin-top: 10px; font-weight: 500; font-size: 16px; width: 180px; color: #000000FF; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">{{item.name}}</div>
               <div style="margin-top: 5px; font-size: 20px; color: #FF5000FF">￥ {{item.price}} / {{item.unit}}</div>
             </el-col>
@@ -147,8 +147,8 @@ export default {
         }
       })
     },
-    navToPerson() {
-      location.href = '/front/person'
+    navTo(url) {
+      location.href = url
     },
     loadGoods() {
       this.$request.get('/goods/selectTop15').then(res => {
