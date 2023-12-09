@@ -70,6 +70,12 @@ public class GoodsController {
         return Result.success(list);
     }
 
+    //根据分类id查询
+    @GetMapping("/selectByTypeId")
+    public Result selectByTypeId(@RequestParam Integer id){
+        List<Goods> list= goodsService.selectByTypeId(id);
+        return Result.success(list);
+    }
     /**
      * 分页查询
      */
@@ -84,6 +90,12 @@ public class GoodsController {
     @GetMapping("/selectTop15")
     public Result selectTop15() {
         List<Goods> list = goodsService.selectTop15();
+        return Result.success(list);
+    }
+
+    @GetMapping("/selectByBusinessId")
+    public Result selectByBusinessId(@RequestParam Integer id) {
+        List<Goods> list = goodsService.selectByBusinessId(id);
         return Result.success(list);
     }
 }

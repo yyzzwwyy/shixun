@@ -30,6 +30,9 @@
             </div>
             <el-dropdown-menu slot="dropdown">
               <el-dropdown-item>
+                <div style="text-decoration: none" @click="navTo('/front/collect')">我的收藏</div>
+              </el-dropdown-item>
+              <el-dropdown-item>
                 <div style="text-decoration: none" @click="logout">退出</div>
               </el-dropdown-item>
             </el-dropdown-menu>
@@ -81,6 +84,9 @@ export default {
     },
     navToPerson() {
       location.href = '/front/person'
+    },
+    navTo(url) {
+      location.href = url
     },
     updateUser() {
       this.user = JSON.parse(localStorage.getItem('xm-user') || '{}')   // 重新获取下用户的最新信息

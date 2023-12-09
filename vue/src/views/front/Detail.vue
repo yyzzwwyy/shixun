@@ -1,5 +1,6 @@
 <template>
   <div class="main-content">
+    <div style="height: 1px"></div>
     <div style="width: 60%; background-color: white; min-height: 1000px; margin: 20px auto; border-radius: 20px">
       <div style="padding: 15px 20px">
         <el-row :gutter="20">
@@ -13,11 +14,11 @@
             <div style="margin-top: 20px">
               <img src="@/assets/imgs/right.png" alt="" style="width: 70%; height: 130px; border-radius: 15px">
             </div>
-            <div style="color: #666666FF; margin-top: 20px">商家：{{goodsData.businessName}}</div>
-            <div style="color: #666666FF; margin-top: 20px">分类：{{goodsData.typeName}}</div>
+            <div style="color: #666666FF; margin-top: 20px">商家：<a href="#" @click="navTo('/front/business?id=' + goodsData.businessId)">{{goodsData.businessName}}</a></div>
+            <div style="color: #666666FF; margin-top: 20px">分类：<a href="#" @click="navTo('/front/type?id=' + goodsData.typeId)">{{goodsData.typeName}}</a></div>
             <div style="color: #666666FF; margin-top: 20px">
               <el-button type="warning">加入购物车</el-button>
-              <el-button type="warning">收藏</el-button>
+              <el-button type="warning" @click="collect">收藏</el-button>
             </div>
           </el-col>
         </el-row>
@@ -63,6 +64,23 @@ export default {
     },
     handleClick(tab, event) {
       this.activeName = tab.name
+    },
+    navTo(url){
+      location.href=url;
+    },
+    collect(){
+      let data = {
+        userId: this.user.id,
+        businessId: this.goodsData.businessId,
+        goodsId: this.goodsId
+      }
+      this.$request.post('/collect/add',data).then(res =>{
+        if (res.code === '200'){
+          this.$message.success("收藏成功")
+        }else{
+          this.$message.error(res.msg)
+        }
+      })
     }
   }
 }

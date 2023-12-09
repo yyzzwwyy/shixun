@@ -81,4 +81,12 @@ public class GoodsService {
     public List<Goods> selectTop15() {
         return goodsMapper.selectTop15();
     }
+
+    public List<Goods> selectByTypeId(Integer id) {
+        return goodsMapper.selectByTypeId(id);
+    }
+
+    public List<Goods> selectByBusinessId(Integer id) {
+        return goodsMapper.selectByBusinessId(id);
+    }
 }

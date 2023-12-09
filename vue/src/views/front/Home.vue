@@ -1,6 +1,7 @@
 <template>
   <div class="main-content">
-    <div style="height: 60px; background-color: #C566F6FF"></div>
+    <div style="height: 1px"></div>
+    <div style="height: 30px; background-color: #C566F6FF"></div>
     <div style="display: flex">
       <div class="left"></div>
       <div style="width: 66%; background-color: white; height: 1000px">
@@ -9,7 +10,7 @@
           <div style="flex: 2">
             <div style="display: flex; color: #666666FF; margin: 14px 0" v-for="item in typeData">
               <img :src="item.img" alt="" style="height: 20px; width: 20px">
-              <div style="margin-left: 10px; font-size: 14px">{{item.name}}</div>
+              <div style="margin-left: 10px; font-size: 14px" ><a href="#" @click="navTo('/front/type?id=' + item.id)">{{item.name}}</a></div>
             </div>
           </div>
           <div style="flex: 5; margin-top: 15px">
@@ -52,12 +53,16 @@
             </div>
             <div style="display: flex; margin-top: 50px">
               <div style="flex: 1; text-align: center">
-                <img src="@/assets/imgs/收藏.png" alt="" style="height: 25px; width: 25px">
-                <div>我的收藏</div>
+                <a href="#" @click="navTo('/front/collect')">
+                  <img src="@/assets/imgs/收藏.png" alt="" style="height: 25px; width: 25px">
+                  <div>我的收藏</div>
+                </a>
               </div>
               <div style="flex: 1; text-align: center">
-                <img src="@/assets/imgs/店铺.png" alt="" style="height: 25px; width: 25px">
-                <div>我的地址</div>
+                <a href="#" @click="navTo('/front/address')">
+                  <img src="@/assets/imgs/店铺.png" alt="" style="height: 25px; width: 25px">
+                  <div>我的地址</div>
+                </a>
               </div>
               <div style="flex: 1; text-align: center">
                 <img src="@/assets/imgs/购物车.png" alt="" style="height: 25px; width: 25px">
